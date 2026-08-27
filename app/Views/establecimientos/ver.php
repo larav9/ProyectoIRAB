@@ -1,16 +1,16 @@
 <div>
-    <h2><?php echo $titulo; ?></h2>
+    <h2><?= esc($titulo) ?></h2>
     <div>
-        <label>Nombre</label>
-        <input type="text" value="<?php echo $establecimiento['nombre']; ?>" readonly>
+        <label for="nombre">Nombre: </label>
+        <?php echo esc($establecimiento['nombre']); ?>
     </div>
     <div>
-        <label>Cuartel</label>
-        <input type="text" value="<?php echo $establecimiento['cuartel']; ?>" readonly>
+        <label for="cuartel">Cuartel: </label>
+        <?php echo esc($establecimiento['cuartel']); ?>
     </div>
     <div>
-        <label>Tipo</label>
-        <input type="text" value="<?php echo $establecimiento['tipo']; ?>" readonly>
+        <label for="tipo">Tipo: </label>
+        <?php echo esc($establecimiento['tipo']); ?>
     </div>
     <a href="<?php echo base_url('establecimientos'); ?>">Volver</a>
 </div>

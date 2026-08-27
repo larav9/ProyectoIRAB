@@ -1,20 +1,24 @@
 <div>
-    <h2><?php echo $titulo; ?></h2>
-    <form action="<?php echo base_url('establecimientos/actualizar'); ?>" method="post">
-        <input type="hidden" name="id" value="<?php echo $establecimiento['id']; ?>">
+    <h2><?= esc($titulo) ?></h2>
+    <form action="<?php echo base_url('establecimientos/actualizar'); ?>" method="post"> <?= csrf_field() ?>
+        <input type="hidden" name="id" value="<?= esc($establecimiento['id']) ?>">
         <div>
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre" value="<?php echo $establecimiento['nombre']; ?>" required>
+            <input type="text" name="nombre" id="nombre" value="<?= esc($establecimiento['nombre']) ?>" required>
         </div>
         <div>
             <label for="cuartel">Cuartel</label>
-            <input type="text" name="cuartel" id="cuartel" value="<?php echo $establecimiento['cuartel']; ?>">
+            <input type="text" name="cuartel" id="cuartel" value="<?= esc($establecimiento['cuartel']) ?>">
         </div>
         <div>
             <label for="tipo">Tipo</label>
             <select name="tipo" id="tipo" required>
-                <option value="CAPS" <?php if ($establecimiento['tipo'] == 'CAPS') echo 'selected'; ?>>CAPS</option>
-                <option value="Hospital" <?php if ($establecimiento['tipo'] == 'Hospital') echo 'selected'; ?>>Hospital</option>
+                <option value="CAPS" <?= $establecimiento['tipo'] === 'CAPS' ? 'selected' : '' ?>>
+                    CAPS
+                </option>
+                <option value="Hospital" <?= $establecimiento['tipo'] === 'Hospital' ? 'selected' : '' ?>>
+                    Hospital
+                </option>
             </select>
         </div>
         <button type="submit">Actualizar</button>

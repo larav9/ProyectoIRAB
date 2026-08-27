@@ -1,15 +1,11 @@
-<div class="">
-    <h2><?php echo $titulo; ?></h2>
-    <form action="<?php echo base_url('roles/insertar'); ?>" method="post">
-        <div class="">
+<div>
+    <h2><?= esc($titulo) ?></h2>
+    <form action="<?php echo base_url('roles/insertar'); ?>" method="post"> <?= csrf_field() ?>
+        <div>
             <label for="nombre">Nombre</label>
-            <input type="text" class="" name="nombre" id="nombre" required>
+            <input type="text" name="nombre" id="nombre" required>
         </div>
-        <button type="submit" class="">
-            Guardar
-        </button>
-        <a href="<?php echo base_url('roles'); ?>" class="">
-            Cancelar
-        </a>
+        <button type="submit">Guardar</button>
+        <a href="<?php echo base_url('roles'); ?>">Cancelar</a>
     </form>
 </div>

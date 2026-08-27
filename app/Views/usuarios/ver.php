@@ -1,30 +1,22 @@
 <div>
-    <h2><?php echo $titulo; ?></h2>
+    <h2><?php echo esc($titulo); ?></h2>
     <div>
         <label>Nombre: </label>
-        <input type="text" value="<?php echo $usuario['nombre']; ?>" readonly>
+        <?php echo esc($usuario['nombre']); ?>
     </div>
     <div>
         <label>Usuario: </label>
-        <input type="text" value="<?php echo $usuario['username']; ?>" readonly>
+        <?php echo esc($usuario['username']); ?>
     </div>
     <div>
         <label>Rol: </label>
-        <?php
-        foreach ($roles as $rol) { if ($usuario['id_rol'] == $rol['id']) { echo $rol['nombre'];
-                break;
-            }
-        }
-        ?>
+        <?php echo esc($usuario['rol_nombre']); ?>
     </div>
     <div>
         <label>Establecimiento asignado: </label>
-        <?php
-        foreach ($establecimientos as $establecimiento) { if ($usuario['id_establecimiento_asignado'] == $establecimiento['id']) { echo $establecimiento['nombre'];
-                break;
-            }
-        }
-        ?>
+        <?php echo esc($usuario['establecimiento_nombre']); ?>
     </div>
-    <a href="<?php echo base_url('usuarios'); ?>">Volver</a>
+    <a href="<?php echo base_url('usuarios'); ?>">
+        Volver
+    </a>
 </div>

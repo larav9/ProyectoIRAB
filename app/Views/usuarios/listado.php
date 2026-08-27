@@ -1,11 +1,9 @@
-<div class="">
-    <div class="">
-        <h2><?php echo $titulo; ?></h2>
-        <a class="" href="<?php echo base_url('usuarios/nuevo'); ?>">
-            Nuevo Usuario
-        </a>
+<div>
+    <div>
+        <h2><?= esc($titulo) ?></h2>
+        <a href="<?php echo base_url('usuarios/nuevo'); ?>">Nuevo Usuario</a>
     </div>
-    <table class="">
+    <table>
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -16,33 +14,19 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($usuarios as $usuario) { ?>
+            <?php foreach ($usuarios as $usuario): ?>
                 <tr>
-                    <td><?php echo $usuario["nombre"]; ?></td>
-                    <td><?php echo $usuario["username"]; ?></td>
-                    <td>
-                        <?php foreach ($roles as $rol) {
-                            if ($usuario['id_rol'] == $rol['id']) {
-                                echo $rol['nombre'];
-                                break;
-                            }
-                        } ?>
-                    </td>
-                    <td>
-                        <?php foreach ($establecimientos as $establecimiento) {
-                            if ($usuario['id_establecimiento_asignado'] == $establecimiento['id']) {
-                                echo $establecimiento['nombre'];
-                                break;
-                            }
-                        } ?>
-                    </td>
+                    <td><?= esc($usuario['nombre']) ?></td>
+                    <td><?= esc($usuario['username']) ?></td>
+                    <td><?= esc($usuario['rol_nombre']) ?></td>
+                    <td><?= esc($usuario['establecimiento_nombre']) ?></td>
                     <td>
                         <!--<a class="" href="<?php echo base_url('usuarios/borrar/' . $usuario["id"]); ?>">Eliminar</a>-->
-                        <a class="" href="<?php echo base_url('usuarios/editar/' . $usuario["id"]); ?>">Editar</a>
-                        <a class="" href="<?php echo base_url('usuarios/ver/' . $usuario["id"]); ?>">Ver</a>
+                        <a href="<?php echo base_url('usuarios/editar/' . $usuario["id"]); ?>">Editar</a>
+                        <a href="<?php echo base_url('usuarios/ver/' . $usuario["id"]); ?>">Ver</a>
                     </td>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

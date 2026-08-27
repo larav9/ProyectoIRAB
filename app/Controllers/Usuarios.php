@@ -21,18 +21,19 @@ class Usuarios extends BaseController
 
     public function index()
     {
-        $usuarios = $this->usuarios->findAll();
-        $roles = $this->rol->findAll();
-        $establecimientos = $this->establecimiento->findAll();
+        $usuarios = $this->usuarios
+            ->select('usuarios.id, usuarios.nombre, usuarios.username, usuarios.id_rol, usuarios.id_establecimiento_asignado,
+                    roles.nombre AS rol_nombre, establecimientos_salud.nombre AS establecimiento_nombre')
+            ->join('roles', 'roles.id = usuarios.id_rol', 'left')
+            ->join('establecimientos_salud', 'establecimientos_salud.id = usuarios.id_establecimiento_asignado', 'left')
+            ->findAll();
 
         $datos = [
             "usuarios" => $usuarios,
-            "roles" => $roles,
-            "establecimientos" => $establecimientos,
             "titulo" => "Usuarios"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('usuarios/listado', $datos);
         echo view('footer');
     }
@@ -48,7 +49,7 @@ class Usuarios extends BaseController
             "titulo" => "Nuevo Usuario"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('usuarios/nuevo', $datos);
         echo view('footer');
     }
@@ -81,7 +82,7 @@ class Usuarios extends BaseController
             "titulo" => "Editar Usuario"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('usuarios/editar', $datos);
         echo view('footer');
     }
@@ -110,18 +111,20 @@ class Usuarios extends BaseController
 
     public function ver($id)
     {
-        $usuario = $this->usuarios->where('id', $id)->first();
-        $roles = $this->rol->findAll();
-        $establecimientos = $this->establecimiento->findAll();
+        $usuario = $this->usuarios
+            ->select('usuarios.id, usuarios.nombre, usuarios.username, usuarios.id_rol, usuarios.id_establecimiento_asignado, 
+                    roles.nombre AS rol_nombre, establecimientos_salud.nombre AS establecimiento_nombre')
+            ->join('roles', 'roles.id = usuarios.id_rol', 'left')
+            ->join('establecimientos_salud', 'establecimientos_salud.id = usuarios.id_establecimiento_asignado','left')
+            ->where('usuarios.id', $id)
+            ->first();
 
         $datos = [
             "usuario" => $usuario,
-            "roles" => $roles,
-            "establecimientos" => $establecimientos,
             "titulo" => "Ver Usuario"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('usuarios/ver', $datos);
         echo view('footer');
     }

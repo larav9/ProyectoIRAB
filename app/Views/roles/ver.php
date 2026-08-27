@@ -1,14 +1,12 @@
-<div class="">
-    <h2><?php echo $titulo; ?></h2>
-    <div class="">
-        <label>ID</label>
-        <input type="text" class="" value="<?php echo $rol['id']; ?>" readonly>
+<div>
+    <h2><?= esc($titulo) ?></h2>
+    <div>
+        <label for="id">ID: </label>
+        <?php echo esc($rol['id']); ?>
     </div>
-    <div class="">
-        <label>Nombre</label>
-        <input type="text" class="" value="<?php echo $rol['nombre']; ?>" readonly>
+    <div>
+        <label for="nombre">Nombre: </label>
+        <?php echo esc($rol['nombre']); ?>
     </div>
-    <a href="<?php echo base_url('roles'); ?>" class="">
-        Volver
-    </a>
+    <a href="<?php echo base_url('roles'); ?>">Volver</a>
 </div>

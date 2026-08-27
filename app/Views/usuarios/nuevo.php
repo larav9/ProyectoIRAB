@@ -1,42 +1,38 @@
-<div class="">
-    <h2><?php echo $titulo; ?></h2>
-    <form action="<?php echo base_url('usuarios/insertar'); ?>" method="post">
-        <div class="">
+<div>
+    <h2><?= esc($titulo) ?></h2>
+    <form action="<?php echo base_url('usuarios/insertar'); ?>" method="post"> <?= csrf_field() ?>
+        <div>
             <label for="nombre">Nombre</label>
             <input type="text" class="" name="nombre" id="nombre" required>
         </div>
-        <div class="">
+        <div>
             <label for="username">Usuario</label>
             <input type="text" class="" name="username" id="username" required>
         </div>
-        <div class="">
+        <div>
             <label for="password">Contraseña</label>
             <input type="password" class="" name="password" id="password" required>
         </div>
-        <div class="">
+        <div>
             <label for="id_rol">Rol</label>
-            <select class="" name="id_rol" id="id_rol" required>
+            <select name="id_rol" id="id_rol" required>
                 <option value="">Seleccione un rol</option>
-                <?php foreach ($roles as $rol) { ?>
-                    <option value="<?php echo $rol['id']; ?>">
-                        <?php echo $rol['nombre']; ?>
+                <?php foreach ($roles as $rol): ?>
+                    <option value="<?= esc($rol['id']) ?>">
+                        <?= esc($rol['nombre']) ?>
                     </option>
-                <?php } ?>
+                <?php endforeach; ?>
             </select>
         </div>
         <div>
-            <label for="id_establecimiento_asignado">
-                Establecimiento asignado
-            </label>
-            <select name="id_establecimiento_asignado"
-                    id="id_establecimiento_asignado"
-                    required>
+            <label for="id_establecimiento_asignado">Establecimiento asignado</label>
+            <select name="id_establecimiento_asignado" id="id_establecimiento_asignado" required>
                 <option value="">Seleccione un establecimiento</option>
-                <?php foreach ($establecimientos as $establecimiento) { ?>
-                    <option value="<?php echo $establecimiento['id']; ?>">
-                        <?php echo $establecimiento['nombre']; ?>
+                <?php foreach ($establecimientos as $establecimiento): ?>
+                    <option value="<?= esc($establecimiento['id']) ?>">
+                        <?= esc($establecimiento['nombre']) ?>
                     </option>
-                <?php } ?>
+                <?php endforeach; ?>
             </select>
         </div>
         <button type="submit" class="">Guardar</button>

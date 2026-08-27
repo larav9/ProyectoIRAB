@@ -22,7 +22,7 @@ class Roles extends BaseController
             "titulo" => "Roles"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('roles/listado', $datos);
         echo view('footer');
     }
@@ -33,7 +33,7 @@ class Roles extends BaseController
             "titulo" => "Nuevo Rol"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('roles/nuevo', $datos);
         echo view('footer');
     }
@@ -58,7 +58,7 @@ class Roles extends BaseController
             "titulo" => "Editar Rol"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('roles/editar', $datos);
         echo view('footer');
     }
@@ -85,7 +85,7 @@ class Roles extends BaseController
             "titulo" => "Ver Rol"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('roles/ver', $datos);
         echo view('footer');
     }

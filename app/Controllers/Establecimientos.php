@@ -22,7 +22,7 @@ class Establecimientos extends BaseController
             "titulo" => "Establecimientos"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('establecimientos/listado', $datos);
         echo view('footer');
     }
@@ -33,7 +33,7 @@ class Establecimientos extends BaseController
             "titulo" => "Nuevo Establecimiento"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('establecimientos/nuevo', $datos);
         echo view('footer');
     }
@@ -60,7 +60,7 @@ class Establecimientos extends BaseController
             "titulo" => "Ver Establecimiento"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('establecimientos/ver', $datos);
         echo view('footer');
     }
@@ -74,7 +74,7 @@ class Establecimientos extends BaseController
             "titulo" => "Editar Establecimiento"
         ];
 
-        echo view('header', $datos);
+        echo view('header');
         echo view('establecimientos/editar', $datos);
         echo view('footer');
     }
